@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mi_filter"
+        android:title="Filter"
+        app:showAsAction="always"
+        android:tooltipText="Sort By Priority"
+        android:icon="@drawable/ic_priority">
+
+        <menu>
+            <item
+                android:id="@+id/mi_no_filter"
+                android:title="No Filter" />
+
+            <item
+                android:id="@+id/mi_low_to_high"
+                android:title="Low to High" />
+
+            <item
+                android:id="@+id/mi_high_to_low"
+                android:title="High to Low" />
+        </menu>
+
+    </item>
+
+</menu>

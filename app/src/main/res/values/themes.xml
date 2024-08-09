@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.NotesApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<!--        <item name="colorPrimaryVariant">@color/red</item>-->
+<!--        <item name="colorSecondary">@color/red</item>-->
+<!--        <item name="colorSecondaryVariant">@color/red</item>-->
+
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryContainer">@color/red_light</item>
+        <item name="colorSecondaryContainer">@color/red_light</item>
+
+        <item name="colorOnPrimarySurface">@color/lighter</item>
+    </style>
+
+    <style name="Theme.NotesApp" parent="Base.Theme.NotesApp" />
+</resources>

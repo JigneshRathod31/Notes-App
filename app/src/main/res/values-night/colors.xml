@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Colors for dark mode   -->
+    <color name="darkest">#EFEFEF</color>
+    <color name="darker">#CDCDCD</color>
+    <color name="dark">#ABABAB</color>
+    <color name="light">#454545</color>
+    <color name="lighter">#232323</color>
+    <color name="lightest">#121212</color>
+
+    <color name="light_bg">#181818</color>
+
+    <color name="white_theme">#000000</color>
+    <color name="black_theme">#FFFFFF</color>
+
+    <color name="bg_transparent">#1AFFFFFF</color>
+</resources>

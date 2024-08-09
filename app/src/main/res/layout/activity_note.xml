@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/note_activity_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.NoteActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:paddingVertical="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:padding="12dp"
+            android:layout_centerVertical="true"
+            app:tint="@color/darkest"
+            android:src="@drawable/ic_back_arrow"
+            android:clickable="true"
+            android:background="@drawable/circle_ripple_bg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Your Note"
+            android:textSize="21sp"
+            android:textColor="@color/darkest"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/iv_back" />
+
+        <ImageView
+            android:id="@+id/iv_delete_note"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:padding="8dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/iv_set_priority"
+            android:visibility="invisible"
+            app:tint="@color/darkest"
+            android:src="@drawable/ic_delete"
+            android:clickable="true"
+            android:background="@drawable/circle_ripple_bg" />
+
+        <ImageView
+            android:id="@+id/iv_set_priority"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:padding="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            app:tint="@color/darkest"
+            android:src="@drawable/ic_priority"
+            android:clickable="true"
+            android:background="@drawable/circle_ripple_bg" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent">
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll_priority_layout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center_vertical"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Priority"-->
+<!--                android:textSize="18sp" />-->
+
+<!--            <com.google.android.material.button.MaterialButtonToggleGroup-->
+<!--                android:id="@+id/tg_note_priority"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                app:singleSelection="true">-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/btn_priority_low"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Low"-->
+<!--                    style="@style/Widget.Material3.Button.OutlinedButton" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/btn_priority_medium"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Medium"-->
+<!--                    style="@style/Widget.Material3.Button.OutlinedButton" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/btn_priority_high"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="High"-->
+<!--                    style="@style/Widget.Material3.Button.OutlinedButton" />-->
+
+<!--            </com.google.android.material.button.MaterialButtonToggleGroup>-->
+
+<!--        </LinearLayout>-->
+
+        <EditText
+            android:id="@+id/et_note_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title"
+            android:textSize="24sp"
+            android:paddingTop="2dp"
+            android:background="@drawable/edittext_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/et_note_sub_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Subtitle"
+            android:textSize="20sp"
+            android:paddingVertical="2dp"
+            android:background="@drawable/edittext_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_note_title"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/et_note_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Note"
+            android:textSize="18sp"
+            android:inputType="textMultiLine"
+            android:lines="24"
+            android:gravity="start"
+            android:paddingVertical="4dp"
+            android:background="@drawable/edittext_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_note_sub_title"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

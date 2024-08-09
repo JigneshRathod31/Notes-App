@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="gray">#787878</color>
+
+    <color name="green">#00e676</color>
+    <color name="green_transparent">#1A00E676</color>
+
+    <color name="amber">#f57c00</color>
+    <color name="amber_transparent">#1AF57C00</color>
+
+    <color name="red">#f44336</color>
+    <color name="red_transparent">#1AF44336</color>
+    <color name="red_light">#FF8980</color>
+
+    <color name="sky_blue">#B8D6FF</color>
+    <color name="sky_blue_transparent">#1AA0C8FF</color>
+
+    <!-- Colors for light mode -->
+
+    <color name="darkest">#121212</color>
+    <color name="darker">#232323</color>
+    <color name="dark">#454545</color>
+    <color name="light">#ABABAB</color>
+    <color name="lighter">#CDCDCD</color>
+    <color name="lightest">#EFEFEF</color>
+
+    <color name="light_bg">#F8F8F8</color>
+
+    <color name="white_theme">#FFFFFF</color>
+    <color name="black_theme">#000000</color>
+
+    <color name="bg_transparent">#1A000000</color>
+</resources>
