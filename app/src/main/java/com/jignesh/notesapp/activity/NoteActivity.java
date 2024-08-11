@@ -1,5 +1,6 @@
 package com.jignesh.notesapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,16 +68,9 @@ public class NoteActivity extends AppCompatActivity {
         binding.ivDeleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                notesViewModel.deleteNote(noteId);
+//                notesViewModel.deleteNote(noteId);
 
-                NotesModel note = new NotesModel(noteId, noteTitle, noteSubTitle, noteBody, noteDate, notePriority);
-                Snackbar snackbar = Snackbar.make(binding.noteActivityRoot, "Note deleted successfully.", Snackbar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        notesViewModel.insertNote(note);
-                    }
-                });
-                snackbar.show();
+                navigateToMainActivity();
             }
         });
 
@@ -155,6 +149,20 @@ public class NoteActivity extends AppCompatActivity {
         binding.etNoteBody.setText(noteBody);
     }
 
+    private void navigateToMainActivity(){
+        Intent deleteNoteIntent = new Intent(this, MainActivity.class);
+
+        deleteNoteIntent.putExtra("action", "delete");
+        deleteNoteIntent.putExtra("noteId", noteId);
+        deleteNoteIntent.putExtra("noteTitle", noteTitle);
+        deleteNoteIntent.putExtra("noteSubTitle", noteSubTitle);
+        deleteNoteIntent.putExtra("noteBody", noteBody);
+        deleteNoteIntent.putExtra("noteDate", noteDate);
+        deleteNoteIntent.putExtra("notePriority", notePriority);
+
+        startActivity(deleteNoteIntent);
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -167,14 +175,21 @@ public class NoteActivity extends AppCompatActivity {
         noteBody = binding.etNoteBody.getText().toString().trim();
         noteDate = dateFormatter.format(date);
 
-        if (action.equals("add")){
-            NotesModel note = new NotesModel(noteTitle, noteSubTitle, noteBody, noteDate, notePriority);
 
-            notesViewModel.insertNote(note);
+        if (action.equals("add")){
+            if (!noteTitle.isEmpty() || !noteSubTitle.isEmpty() || !noteBody.isEmpty()){
+                NotesModel note = new NotesModel(noteTitle, noteSubTitle, noteBody, noteDate, notePriority);
+
+                notesViewModel.insertNote(note);
+            }
         }else{
             NotesModel note = new NotesModel(noteId, noteTitle, noteSubTitle, noteBody, noteDate, notePriority);
 
-            notesViewModel.updateNote(note);
+            if (!noteTitle.isEmpty() || !noteSubTitle.isEmpty() || !noteBody.isEmpty()){
+                notesViewModel.updateNote(note);
+            }else {
+                notesViewModel.deleteNote(noteId);
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.jignesh.notesapp.R;
 import com.jignesh.notesapp.adapter.NotesAdapter;
 import com.jignesh.notesapp.databinding.ActivityMainBinding;
@@ -48,6 +50,33 @@ public class MainActivity extends AppCompatActivity {
         notesViewModel.allNotesList.observe(this, notesList -> {
             showNotes(notesList);
         });
+        
+        String action = getIntent().getStringExtra("action");
+
+        if (action != null && action.equals("delete")){
+
+            int noteId = getIntent().getIntExtra("noteId", -1);
+            String noteTitle = getIntent().getStringExtra("noteTitle");
+            String noteSubTitle = getIntent().getStringExtra("noteSubTitle");
+            String noteBody = getIntent().getStringExtra("noteBody");
+            String noteDate = getIntent().getStringExtra("noteDate");
+            String notePriority = getIntent().getStringExtra("notePriority");
+            
+            if (noteId != -1){
+                notesViewModel.deleteNote(noteId);
+
+                NotesModel note = new NotesModel(noteId, noteTitle, noteSubTitle, noteBody, noteDate, notePriority);
+                Snackbar snackbar = Snackbar.make(binding.main, "Note deleted successfully.", Snackbar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        notesViewModel.insertNote(note);
+                    }
+                });
+                snackbar.show();
+            }else {
+                Toast.makeText(this, "Id not found to delete the note...", Toast.LENGTH_SHORT).show();
+            }
+        }
 
         binding.searchBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
